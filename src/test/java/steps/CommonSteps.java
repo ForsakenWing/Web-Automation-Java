@@ -219,6 +219,18 @@ public class CommonSteps extends WebUtilities {
         pageName = strUtils.firstLetterDeCapped(pageName);
         clearFillInput(getElementFromPage(inputName, pageName, new ObjectRepository()), input, false, true);
     }
+    @Given("Fill the {} on the {} from folder {} with file {}")
+    public void uploadFileToApp(String inputName, String pageName, String folder, String file) {
+        log.new Info("Filling " +
+                highlighted(BLUE, inputName) +
+                highlighted(GRAY, " on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, " with the text: ") +
+                highlighted(BLUE, folder + "/" + file)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        uploadFile(getElementFromPage(inputName, pageName, new ObjectRepository()), folder, file);
+    }
 
     @Given("Fill listed input {} from {} list on the {} with text: {}")
     public void fillListedInput(String inputName, String listName, String pageName, String input) {
